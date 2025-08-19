@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chamber of the Scarabs</title>
+  <link rel="stylesheet" href="cli.css">
+</head>
+<body>
+  <div id="terminal">
+    <pre>
+        ~~~~~  CHAMBER OF THE SCARABS  ~~~~~
+
+             ⠀ ⢀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⡇⢰⣿⣿⣿⣿⣿⣿⡆⢸⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢈⣿⣷⠀⠀⠈⠙⠃⠀⣹⣿⣿⣿⣿⣏⠀⠘⠋⠀⠀⠀⣾⣿⡀⠀⠀⠀
+⠀⠀⠀⠘⣿⡇⠀⠀⠀⠀⣠⠾⠟⠛⠛⠛⠛⠻⠷⣄⠀⠀⠀⠀⢹⣿⠃⠀⠀⠀
+⠀⠀⠀⠀⢿⡇⠀⠀⠀⢀⠀⣴⠀⣸⡇⢸⣷⠀⣦⠀⠀⠀⠀⠀⢸⡿⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠛⠶⠆⢰⣿⠀⣿⠀⣿⡇⢸⣿⠀⣿⠀⣿⡄⠰⠶⠋⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣀⠀⣸⣿⠀⣿⠀⣿⡇⢸⣿⠀⣿⡄⣿⡇⠀⣀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢀⣶⠟⠛⠀⢻⣿⣦⣿⡇⣿⡇⢸⣿⡄⣿⡇⣿⡇⠀⠛⢻⣦⡀⠀⠀⠀
+⠀⠀⠀⣼⡟⠀⠀⠀⢸⣿⣿⣿⣇⣿⡇⢸⣿⣇⣿⣿⣿⡇⠀⠀⠀⢿⣧⠀⠀⠀
+⠀⠀⢾⣿⠃⠀⢀⣤⠀⢿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⡟⠀⣤⡀⠀⠸⣿⡷⠀⠀
+⠀⠰⠿⠟⠀⢠⣿⠁⠀⠈⠻⣿⣿⣿⡇⢸⣿⣿⣿⠟⠀⠀⠈⣿⠀⠀⠻⠷⠄⠀
+⠀⠀⠀⠀⠀⠘⢿⣷⣀⠀⠀⠉⠻⠿⡇⢸⠿⠟⠉⠀⠀⣠⣾⡿⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⡟⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠁⠸⠛⣿⠀⠀⠀⠀⠀⠀⠀⠀⣿⠛⠇⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+           Scarabs crawl around you...
+
+    </pre>
+    <p>
+      You step into a chamber crawling with scarabs.<br>
+      They whisper in unison, forming a hidden code.<br>
+      Only by <b>deciphering the pattern</b> can you command them to part.
+    </p>
+    <p>19-3-1-18-1-2</p>
+    <p><small>(Hint: A=1, B=2, ... Z=26)</small></p>
+
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="> decipher code...">
+    <p id="timer"></p>
+  </div>
+  <script src="cli.js"></script>
+  <script>
+    // --- Logic Stage 6 ---
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    // Kode angka -> 19 3 1 18 1 2 (SCARAB)
+    const answer = "scarab";
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim().toLowerCase();
+        input.value = "";
+
+        if (cmd === answer) {
+          output.innerHTML += "<p>✅ The scarabs scatter, revealing the passage...</p>";
+          setTimeout(() => {
+            window.location.href = "stage7.html"; // lanjut stage 7
+          }, 2000);
+        } else {
+          output.innerHTML += "<p>❌ The scarabs swarm angrily... The code is wrong.</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The River of Duat</title>
+  <link rel="stylesheet" href="cli.css">
+</head>
+<body>
+  <div id="terminal">
+    <pre>
+        ~~~~~  THE RIVER OF DUAT  ~~~~~
+
+                ~ ~  ~ ~ ~  ~ ~ ~
+              ~     ~    ~     ~
+          🐊  Sobek watches from the dark waters...  🐊
+    </pre>
+    <p>
+      You stand before the River of Duat, gateway to the afterlife.<br>
+      The crocodile god lurks beneath the surface, waiting for the unworthy.<br>
+      Only the right command will summon the sacred boat.
+    </p>
+    <p><small>(Hint: command the river...)</small></p>
+
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="> type command...">
+    <p id="timer"></p>
+  </div>
+  <script src="cli.js"></script>
+  <script>
+    // --- Logic Stage 4 (Duat version) ---
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim().toLowerCase();
+        input.value = "";
+
+        if (cmd === "sail the duat") {
+          output.innerHTML += "<p>✅ The sacred boat appears... You cross safely.</p>";
+          setTimeout(() => {
+            window.location.href = "stage5.html"; // lanjut stage 5
+          }, 1500);
+        } else if (cmd === "sail nile") {
+          output.innerHTML += "<p>❌ The Nile is the river of life... not death. Try again.</p>";
+        } else if (cmd.includes("swim")) {
+          output.innerHTML += "<p>❌ The waters drag you down... Sobek devours the foolish.</p>";
+        } else {
+          output.innerHTML += "<p>❌ Nothing happens. The river remains still.</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

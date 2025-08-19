@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chamber of Numbers</title>
+  <link rel="stylesheet" href="cli.css">
+</head>
+<body>
+  <div id="terminal">
+    <pre>
+        ~~~~~  THE CHAMBER OF NUMBERS  ~~~~~
+
+               ▄▄▄▄▄▄▄
+              █████████
+              █▄███▄███
+              █████████
+              ▀▀▀▀▀▀▀▀▀
+
+          The walls are carved with symbols...
+    </pre>
+    <p>
+      The builders left their mark in numbers.<br>
+      Solve the riddle to open the chamber:
+    </p>
+    <p>
+      A pyramid has 4 sides.<br>
+      Ra’s number is 1.<br>
+      Anubis guards with 2 eyes.<br>
+      What is the total?
+    </p>
+
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="> enter number...">
+    <p id="timer"></p>
+  </div>
+  <script src="cli.js"></script>
+  <script>
+    // --- Logic Stage 7 ---
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    const answer = "7";
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim().toLowerCase();
+        input.value = "";
+
+        if (cmd === answer) {
+          output.innerHTML += "<p>✅ The numbers align. The stone door slides open...</p>";
+          setTimeout(() => {
+            window.location.href = "stage8.html"; // lanjut stage 8
+          }, 2000);
+        } else {
+          output.innerHTML += "<p>❌ The numbers fade... The chamber remains sealed.</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

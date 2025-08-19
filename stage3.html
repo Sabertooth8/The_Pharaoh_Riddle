@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hieroglyph Scroll</title>
+  <link rel="stylesheet" href="cli.css">
+</head>
+<body>
+  <div id="terminal">
+    <pre>
+       ~~~~~  THE HIEROGLYPH SCROLL  ~~~~~
+
+        𓅓   𓈖   𓎡   𓉔
+    </pre>
+    <p>
+      A scroll lies before you, covered in strange symbols. <br>
+      Decode the glyphs using the sacred alphabet below.
+    </p>
+
+    <pre>
+      HIEROGLYPH ALPHABET:
+      𓄿 = A   𓃀 = B   𓍿 = C   𓂧 = D   𓇌 = E
+      𓆑 = F   𓎼 = G   𓉔 = H   𓇋 = I   𓏭 = J
+      𓎡 = K   𓃭 = L   𓅓 = M   𓈖 = N   𓍯 = O
+      𓊪 = P   𓏘 = Q   𓂋 = R   𓋴 = S   𓍿 = T
+      𓅱 = U   𓆑𓆑 = V  𓏲 = W   𓐍 = X   𓇋𓇋 = Y
+      𓊃 = Z
+    </pre>
+
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="> decode here...">
+    <p id="timer"></p>
+  </div>
+  <script src="cli.js"></script>
+  <script>
+    // --- Logic Stage 3 ---
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim().toLowerCase();
+        input.value = "";
+
+        if (cmd === "ankh") {
+          output.innerHTML += "<p>✅ The scroll glows... You may proceed.</p>";
+          setTimeout(() => {
+            window.location.href = "stage4.html"; // lanjut stage 4
+          }, 1500);
+        } else {
+          output.innerHTML += "<p>❌ The glyphs remain silent.</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

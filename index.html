@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Curse Awaits...</title>
+  <link rel="stylesheet" href="cli.css">
+</head>
+<body>
+  <div id="terminal">
+    <pre>
+       ☠️  YOU HAVE BEEN CURSED ☠️
+
+      The sands of time bind your soul.
+      Anubis watches, weighing your fate...
+    </pre>
+    <p>
+      Do you dare to begin the journey into the pyramids?<br>
+      Choose wisely...
+    </p>
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="> type 'yes' or 'no'">
+  </div>
+  <script>
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim().toLowerCase();
+        input.value = "";
+
+        if (cmd === "yes") {
+          output.innerHTML += "<p>✅ You embrace the curse and step forward...</p>";
+          setTimeout(() => {
+            window.location.href = "stage1.html"; // masuk stage 1
+          }, 2000);
+        } else if (cmd === "no") {
+          output.innerHTML += "<p>❌ You refuse the path... The curse consumes you.</p>";
+          setTimeout(() => {
+            window.location.href = "death.html"; // langsung mati
+          }, 2000);
+        } else {
+          output.innerHTML += "<p>❓ The gods do not understand your hesitation...</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

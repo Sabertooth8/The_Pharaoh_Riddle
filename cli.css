@@ -1,0 +1,23 @@
+body {
+  background: black;
+  color: #33ff33;
+  font-family: monospace;
+  padding: 20px;
+}
+#terminal {
+  max-width: 600px;
+  margin: auto;
+}
+#input {
+  background: black;
+  border: none;
+  border-bottom: 1px solid #33ff33;
+  color: #33ff33;
+  width: 100%;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 16px;
+}
+#input:focus {
+  outline: none;
+}

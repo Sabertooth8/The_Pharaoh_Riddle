@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Tomb of Anubis</title>
+  <link rel="stylesheet" href="cli.css">
+</head>
+<body>
+  <div id="terminal">
+    <pre>
+        ~~~~~  THE TOMB OF ANUBIS  ~~~~~
+
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⡄⠀⢸⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡄⢸⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣷⢸⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⠿⠛⠧⠀⠀⠀⠀⠀⠀
+⢀⣤⣤⣤⣤⣤⣤⣤⣿⣿⣯⣉⣉⣽⣿⡿⠁⢀⣤⡀⠀⠀⠀⠀⠀⠀
+⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠸⠿⠟⠀⢰⡄⠀⠀⠀
+⠀⠀⠉⠙⠛⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⣄⣀⣀⣴⣿⣿⡄⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⣿⣿⣿⣿⠏⠀⣰⣿⣿⣿⣿⣿⣿⣿⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡿⠟⠁⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀
+
+            Anubis, Guardian of the Dead
+    </pre>
+    <p>
+      You enter the dark tomb of Anubis, lord of the dead.<br>
+      Before you lies the Scale of Ma'at.<br>
+      Only by speaking the <b>word of truth</b> will your heart be judged pure.
+    </p>
+    <p><small>(Hint: The word is hidden in the alphabet, from A to Z...)</small></p>
+
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="> type the sacred word...">
+    <p id="timer"></p>
+  </div>
+  <script src="cli.js"></script>
+  <script>
+    // --- Logic Stage 5 ---
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    // Sacred word = "truth" (atau bisa lu ganti rahasia)
+    const answer = "truth";
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim().toLowerCase();
+        input.value = "";
+
+        if (cmd === answer) {
+          output.innerHTML += "<p>✅ The scales balance. Anubis nods in approval...</p>";
+          setTimeout(() => {
+            window.location.href = "stage6.html"; // lanjut stage 6
+          }, 2000);
+        } else {
+          output.innerHTML += "<p>❌ The scales tip. Anubis growls... Try again.</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

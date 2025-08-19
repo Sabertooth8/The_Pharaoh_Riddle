@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Tomb of Tutankhamun</title>
+  <link rel="stylesheet" href="cli.css">
+</head>
+<body>
+  <div id="terminal">
+    <pre>
+        ~~~~~  THE TOMB OF TUTANKHAMUN  ~~~~~
+
+              .-"      "-.
+             /            \
+            |,  .-.  .-.  ,|
+            | )(_o/  \o_)( |
+            |/     /\     \|
+            (_     ^^     _)
+             \__|IIIIII|__/
+              | \IIIIII/ |
+              \          /
+               `--------`
+
+            The Pharaoh waits in silence...
+    </pre>
+    <p>
+      At last, you stand before the golden tomb of Tutankhamun.<br>
+      The air grows heavy. The walls whisper of <b>eternity</b>.<br>
+      Speak the final word, and the tomb shall open.
+    </p>
+    <p><small>(Hint: The answer is hidden in the whispers of time...)</small></p>
+
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="> speak the final word...">
+    <p id="timer"></p>
+  </div>
+  <script src="cli.js"></script>
+  <script>
+    // --- Logic Stage 8 (Final) ---
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    const answer = "eternity";
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim().toLowerCase();
+        input.value = "";
+
+        if (cmd === answer) {
+          output.innerHTML += "<p>✅ The tomb opens... You have conquered death itself!</p>";
+          setTimeout(() => {
+            window.location.href = "victory.html"; // ending page
+          }, 2500);
+        } else {
+          output.innerHTML += "<p>❌ The tomb remains sealed. The whispers grow louder...</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
